@@ -83,7 +83,7 @@ done
 
 ## How do I process an array with a for each?
 ```
-for i in ${ARRAY[@]; do
+for i in ${ARRAY[@]}; do
     # do something with i
 done
 ```
