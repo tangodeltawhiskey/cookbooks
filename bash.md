@@ -13,11 +13,13 @@
 * [How do I loop over lines from stdin?](#how-do-i-loop-over-lines-from-stdin)
 * [How do I loop over lines from a file?](#how-do-i-loop-over-lines-from-a-file)
 * [How do I send both stdout and stderr from a command to a file?](#how-do-i-send-both-stdout-and-stderr-from-a-command-to-a-file)
-* [How do I create a traditional for loop with?](#how-do-i-create-a-traditional-for-loop-with) 
+* [How do I create a traditional for loop?](#how-do-i-create-a-traditional-for-loop) 
 * [How do I process an array with a for each?](#how-do-i-process-an-array-with-a-for-each)
+* [How do I process the output of a command with a for each?](#how-do-i-process-the-output-of-a-command-with-a-for-each)
 * [How do I create a function?](#how-do-i-create-a-function)
 * [How do I access arguments passed to a script or function?](#how-do-i-access-arguments-passed-to-a-script-or-function)
-* [How do I access the exit value of last execute command?](#how-do-i-access-the-exit-value-of-last-execute-command)
+* [How do I get the exit value of the last executed command?](#how-do-i-get-the-exit-value-of-the-last-executed-command)
+* [How do I write conditional statements?](#how-do-i-write-conditional-statements)
 
 ## How do I declare a variable as an integer? ##
 `declare -i VAR`
@@ -63,18 +65,16 @@ done
 
 ## How do I loop over lines from a file? ##
 Use while and read and take input from a file.
-```
+<pre>
 while read line; do
     # do something with line
-done < file
-```
-
-## How do I send both stdout and stderr from a command to a file? ##
-<pre>
-<i>cmd</i> > </>file</i> 2>&1
+done < <i>file</i>
 </pre>
 
-## How do I create a traditional for loop with?
+## How do I send both stdout and stderr from a command to a file? ##
+<tt><i>cmd</i> > <i>file</i> 2>&1</tt>
+
+## How do I create a traditional for loop?
 ```
 for ((i=0; i<$NUM; i++)); do
     # do something at i
@@ -87,6 +87,13 @@ for i in ${ARRAY[@]}; do
     # do something with i
 done
 ```
+
+## How do I process the output of a command with a for each?
+<pre>
+for i in $(<i>cmd</i>); do
+    # process i
+done
+</pre>
 
 ## How do I create a function?
 ```
@@ -107,6 +114,46 @@ Number of argruments passed: `$#`
 
 All arguments: `$@`
 
-## How do I access the exit value of last execute command?
+## How do I get the exit value of the last executed command?
 `$?`
 
+## How do I write conditional statements?
+In general:
+<pre>
+if [ <i>condition1</i> ]; then
+    # if condition 1 is true then do something
+elif [ <i>condition2</i> ]; then
+    # else if condition 2 is true then do something
+else
+    # else do something
+fi
+</pre>
+
+Comparing strings.
+  * are equal: <tt><i>s1</i> == <i>s2</i></tt>
+  * are not equal <tt><i>s1</i> != <i>s2</i></tt>
+  * has nonzero length: <tt>-n <i>s1</i></tt>
+  * has zero length: <tt>-z <i>s1</i></tt>
+
+Comparing integers.
+  * are equal: <tt><i>n1</i> -eq <i>n2</i></tt>
+  * is greater than or equal: <tt><i>n1</i> -ge <i>n2</i></tt>
+  * is greater than: <tt><i>n1</i> -gt <i>n2</i></tt>
+  * is less than or equal: <tt><i>n1</i> -le <i>n2</i></tt>
+  * is less than: <tt><i>n1</i> -lt <i>n2</i></tt>
+  * are not equal: <tt><i>n1</i> -ne <i>n2</i></tt>
+
+Evaluating files.
+  * file exists: <tt>-e <i>file</i></tt>
+  * file exists and is regular: <tt>-f <i>file</i></tt>
+  * file exists and is directory: <tt>-d <i>file</i></tt>
+  * file exists and is readable: <tt>-r <i>file</i></tt>
+  * file exists and is writable: <tt>-w <i>file</i></tt>
+  * file exists and is executable: <tt>-x <i>file</i></tt>
+  * file exists and has nonzero size: <tt>-s <i>file</i></tt>
+
+Negating Conditions: <tt>[ ! <i>condition</i> ]</tt>
+
+ORing Conditions: <tt>[ <i>condition1</i> ] || [ <i>condition2</i> ]</tt>
+
+ANDing Conditions: Conditions: <tt>[ <i>condition1</i> ] && [ <i>condition2</i> ]</tt>
