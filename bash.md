@@ -21,8 +21,8 @@
 * [How do I access arguments passed to a script or function?](#how-do-i-access-arguments-passed-to-a-script-or-function)
 * [How do I get the exit value of the last executed command?](#how-do-i-get-the-exit-value-of-the-last-executed-command)
 * [How do I write conditional statements?](#how-do-i-write-conditional-statements)
-* [How do I get a list of builtin commands?](#how-do-i-get-a-list-of-builtin-commands)
-* [How do I learn more about a builtin command?](#how-do-i-learn-more-about-a-builtin-command)
+* [How do I get a list of built-in commands?](#how-do-i-get-a-list-of-built-in-commands)
+* [How do I learn more about a built-in command?](#how-do-i-learn-more-about-a-built-in-command)
 
 ## How do I declare a variable as an integer?
 `declare -i VAR`
@@ -168,8 +168,8 @@ ORing Conditions: <tt>[ <i>condition1</i> ] || [ <i>condition2</i> ]</tt>
 
 ANDing Conditions: Conditions: <tt>[ <i>condition1</i> ] && [ <i>condition2</i> ]</tt>
 
-## How do I get a list of builtin commands?
+## How do I get a list of built-in commands?
 `enable -a`
 
-## How do I learn more about a builtin command?
+## How do I learn more about a built-in command?
 <tt>help <i>cmd</i></tt>
